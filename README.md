@@ -10,7 +10,7 @@
 - UserINSystem page for only Admin `can Update User Role & Delete User`
 ----
 ### Videos
-[![Watch the video](https://github.com/mohamedahmed-cloud/Todo-Asp.net-Core/raw/main/video_thumbnail.jpg)](https://github.com/mohamedahmed-cloud/Todo-Asp.net-Core/raw/main/TodoProject.mp4)
+[Watch the video](https://github.com/mohamedahmed-cloud/Todo-Asp.net-Core/raw/main/TodoProject.mp4)
 
 
 ---
