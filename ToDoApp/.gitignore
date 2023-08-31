@@ -1,0 +1,18 @@
+# ASP.NET Core
+obj/
+bin/
+.vscode/
+*.swp
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.sln.docstates
+
+# macOS
+.DS_Store
+
+# JetBrains Rider
+.idea/
+*.sln.iml

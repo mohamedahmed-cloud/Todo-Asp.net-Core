@@ -1,0 +1,110 @@
+﻿@model List<Category>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo Tasks</title>
+</head>
+
+
+<div class='container'>
+    <div class="our-header">
+        <h3>User Category</h3>
+        <a class="button" asp-action="AddCategory" asp-controller="Category">Add Category</a>
+    </div>
+	<table class="table">
+          <thead class="thead-dark">
+            <tr class="header">
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope= "col"> Edit</th>
+              <th scope="col">Delete</th>
+              
+            </tr>
+          </thead>
+         <tbody>
+            @{var cnt = 1;}
+            
+	        @foreach (var item in Model)
+	        {
+                <tr class="@(cnt % 2 == 0? "even":"odd")">
+                    <th scope="row">@cnt</th>@{cnt++;}
+                    <td>@item.Name</td>
+                    <td>
+                        <a asp-action="UpdateCategory" asp-route-id="@item.Id">
+                            <i class="fa-regular fa-pen-to-square text-success catchyou"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="DeleteCategory"  asp-route-id="@item.Id">
+                            <i class="fa-solid fa-trash text-danger catchyou"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+           </tbody>
+        </table>    
+</div>
+
+
+<style>
+    .container {
+        width:min(94vw, 700px);
+    }
+    .our-header {
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        background-color:#1c1c1c;
+        font-weight:bold;
+        padding:10px 20px;
+        border-radius:10px;
+        margin:30px 0px 0px;
+        color:#427677;
+    }
+    a.button
+    {
+        padding:8px 15px;
+        border-radius:20px;
+        background-color:#427677;
+        color:#fff;
+        border:none;
+        outline:none;
+        text-decoration:none;
+
+
+    }
+   
+    table {
+            margin:20px 0px 40px ;
+    }
+    .header {
+        color:#427677;
+        background-color:#000;
+    }
+    .admin
+    {
+        color:#c80202;
+        font-weight:bold;
+        font-size:17px;
+    }
+    .even {
+        background-color:#222;
+        color:#eee;
+
+    }
+    .odd {
+        background-color:#eee;
+        color:#222;
+    }
+    .catchyou {
+        cursor:pointer;
+    }
+    .inputcheck {
+        cursor:pointer;
+    }
+   
+    
+</style>

@@ -1,0 +1,86 @@
+﻿@model User
+
+<form  asp-action="SaveSignIn" asp-controller="Account" method="get" class= "login-form">
+   @*<div class="text-danger" asp-validation-summary="All"></div>*@
+   <section class = "contain">
+       <p class="text-center text-danger">@ViewBag.ErroMessage</p>
+        <div class="form-group">
+            <label for="user">User Name</label>
+            <input type="text" class="form-control" id="user" placeholder="User Name" asp-for="Name">
+            <span asp-validation-for = "Name" class="text-danger"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="Email" asp-for="Email">
+        <span asp-validation-for = "Email" class="text-danger"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password" asp-for="Password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+      </div>
+       <div class="form-group">
+        <label for="cpassword">Confirm Password</label>
+        <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password" asp-for="confirmPassword">
+        <span asp-validation-for="confirmPassword" class="text-danger"></span>
+
+    </div>
+
+      <div >
+        <button type = "submit" class = "btn btn-dark">SignIn</button>
+        <a asp-controller="Account" asp-action = "Login">Login</a>
+      </div>
+  </section>
+</form>
+
+
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<style >
+ 
+    .login-form {
+        width:min(400px, 97vw);
+        margin-left:auto;
+        margin-right:auto;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-direction:column;
+        height:91.6vh;
+    }
+    .contain {
+        background-color:#222;
+        padding:50px 70px   ;
+        border-radius:18px;
+        box-shadow: 0px 0px 18px 5px #212529;
+
+    }
+    .contain label {
+        color:#fff;
+        margin:7px 0px;
+    }
+    .contain div:nth-of-type(5) {
+        margin-top:20px;
+    }
+    .contain div:nth-of-type(5) a {
+        text-decoration:none;
+        color:#fff;
+    }
+    .contain div:nth-of-type(5) a:hover {
+        color:red;
+        font-size:18px;
+    }
+    div input {
+        width:min(350px, 94vw) !important;
+    }
+</style>
+
+
+
+

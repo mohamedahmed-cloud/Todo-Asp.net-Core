@@ -1,0 +1,114 @@
+﻿@using System.Security.Claims
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] Todo</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ToDoApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/font-awesome/css/all.css" />
+    <style> 
+        
+        .login {
+            text-align:end;
+        }
+        .navbar-nav {
+            flex-direction:row !important;
+        }
+        .header {
+            background-color:#3c3c3c;
+        }
+        .header nav a{
+            color:#eee !important;
+        }
+         .header nav a.active {
+            color:red !important;
+        }
+        .main-image {
+            width:40px;
+        }
+</style>
+</head>
+<body>
+    <header class = "header">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Todo" asp-action="Index">
+                    <img src="~/images/Main.png" alt = "Main Image" class = "main-image"/>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 ">
+                        @if(User?.Identity?.IsAuthenticated == false){
+                            <li class="nav-item">
+                                <a class="nav-link  @(ViewContext.RouteData.Values["controller"].ToString() == "Todo" && ViewContext.RouteData.Values["action"].ToString() == "Index"  ? "active": "")" asp-area="" asp-controller="Todo" asp-action="Index">Home</a>
+                            </li>
+                        } else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link  @(ViewContext.RouteData.Values["controller"].ToString() == "Todo" && ViewContext.RouteData.Values["action"].ToString() == "Index"  ? "active": "")" asp-area="" asp-controller="Todo" asp-action="Index">Todo</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Category" && ViewContext.RouteData.Values["action"].ToString() == "Index"? "active": "" ) " asp-action="Index" asp-controller="Category">Category</a>
+                            </li>
+                            @if(User.HasClaim(ClaimTypes.Role, "admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "UserInSystem" && ViewContext.RouteData.Values["action"].ToString()== "Index"?"active": "" )" asp-action="Index" asp-controller = "UserInSystem">System User</a>
+                                </li>
+                                
+                            }
+                            
+                        }
+
+                    </ul>
+                    <ul class="navbar-nav  ">
+                        @if(User?.Identity?.IsAuthenticated == false)
+                        {
+                            <li class = "nav-item login">
+                                    <a class= "nav-link login @(ViewContext.RouteData.Values["controller"].ToString() == "Account" && (ViewContext.RouteData.Values["action"].ToString() == "Login" || ViewContext.RouteData.Values["action"].ToString() == "SignIn") ? "active": "") " asp-controller = "Account" asp-action="Login">Login</a>
+                            </li>
+                        }else
+                        {
+                            <li class = "nav-item login">
+                                    <a class= "nav-link login @(ViewContext.RouteData.Values["controller"].ToString() == "Account" && (ViewContext.RouteData.Values["action"].ToString() == "Logout" ) ? "active": "") " asp-controller = "Account" asp-action="Logout">Logout</a>
+                            </li>            
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+
+    </header>
+    <div>
+        <main role="main" >
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    @await Component.InvokeAsync("Notyf")
+
+</body>
+</html>
+<script>
+
+       
+
+
+    
+
+</script>

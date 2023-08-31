@@ -1,0 +1,85 @@
+﻿@model Todo
+@{
+    var action = Model == null ? "SaveTask" : "saveUpdateTask";
+    var buttonText = Model == null ? "Add Task" : "Update Task";
+    Console.WriteLine(action);
+}
+
+<form class= "login-form" asp-action="@action" asp-controller="Todo" method="post" asp-route-id = "@Model?.Id">
+   <section class = "contain">
+       <p class="text-danger  text-center">@ViewBag.ErrorMessage</p>
+
+      <div class="form-group">
+        <label for="Name">Task Name</label>
+        <input type="text" class="form-control" id="Name" placeholder="Name" asp-for="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="Description">Task Description</label>
+        <input type="text" class="form-control" id="Description" placeholder="Description" asp-for="Description">
+        <span asp-validation-for="Description" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+          <label for="Category">Task Category</label>
+          <select class="form-select" asp-for="CategoryId">
+              @foreach (var item in ViewData["Catogry"] as ICollection<Category>)
+              {
+                    <option value=@item.Id>@item.Name</option>
+              }
+          </select>
+      </div>
+
+      <div >
+        <button type = "submit" class = "btn btn-dark">@buttonText</button>
+        <a asp-controller="Todo" asp-action = "Index">Go Back</a>
+
+      </div>
+  </section>
+</form>
+@section Scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+<style >
+.login-form {
+    width:min(400px, 97vw);
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    height:91.6vh;
+}
+.contain {
+    background-color:#222;
+    padding:50px;
+    border-radius:18px;
+    box-shadow: 0px 0px 18px 5px #212529;
+}
+.contain label {
+    color:#fff;
+    margin:7px 0px;
+}
+.contain div:nth-of-type(4) {
+    margin-top:20px;
+}
+.contain div:nth-of-type(4) a {
+    text-decoration:none;
+    color:#fff;
+}
+.contain div:nth-of-type(4) a:hover {
+    color:red;
+    font-size:18px;
+}
+div input,
+div select{
+    width:min(350px, 94vw) !important;
+    /*height:40px;*/
+}
+
+</style>
