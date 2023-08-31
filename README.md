@@ -23,7 +23,9 @@
 ---
 ### Database Scheme
 <img src= "DatabaseScheme.png"/>
+
 ---------
+
 ### dotnet Version:
 - dotnet version 6 or higher.
 - Sql Server 2019
