@@ -1,5 +1,5 @@
 # Todo
-### Features
+- ### Features
 - Login & sign in
 - Authentication
 - Authorization
@@ -9,7 +9,7 @@
 - Category Page has all CRUD Operation
 - UserINSystem page for only Admin `can Update User Role & Delete User`
 ----
-### Videos
+- ### Videos
 
 [![TodoTask](https://img.youtube.com/vi/G5G7dSBsd0c/0.jpg)](https://www.youtube.com/watch?v=G5G7dSBsd0c)
 
@@ -19,12 +19,12 @@
 
 
 ---
-### Database Scheme
+- ### Database Scheme
 <img src= "DatabaseScheme.png"/>
 
 ---------
 
-### dotnet Version:
+- ### dotnet Version
 - dotnet version 6 or higher.
 - Sql Server 2019
 
